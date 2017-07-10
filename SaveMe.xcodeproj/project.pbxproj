@@ -8,20 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		1811FD921F142533003339E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FD911F142533003339E9 /* AppDelegate.swift */; };
-		1811FD941F142533003339E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FD931F142533003339E9 /* ViewController.swift */; };
-		1811FD971F142533003339E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1811FD951F142533003339E9 /* Main.storyboard */; };
 		1811FD991F142533003339E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1811FD981F142533003339E9 /* Assets.xcassets */; };
-		1811FD9C1F142533003339E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1811FD9A1F142533003339E9 /* LaunchScreen.storyboard */; };
+		1811FDA41F1425E2003339E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FDA31F1425E2003339E9 /* ViewController.swift */; };
+		1811FDA71F142612003339E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1811FDA61F142612003339E9 /* GoogleService-Info.plist */; };
+		1811FDAB1F142650003339E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1811FDA91F142650003339E9 /* LaunchScreen.storyboard */; };
+		1811FDAC1F142650003339E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1811FDAA1F142650003339E9 /* Main.storyboard */; };
+		1811FDAF1F1427A9003339E9 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1811FDAE1F1427A9003339E9 /* Info.plist */; };
+		2DD0CF67A050D23E2310ACCE /* Pods_SaveMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DBD8A742EB84E687EDE04C /* Pods_SaveMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1811FD8E1F142533003339E9 /* SaveMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1811FD911F142533003339E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1811FD931F142533003339E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1811FD961F142533003339E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1811FD981F142533003339E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1811FD9B1F142533003339E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1811FD9D1F142533003339E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1811FDA31F1425E2003339E9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "View Controllers/ViewController.swift"; sourceTree = "<group>"; };
+		1811FDA61F142612003339E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Supporting Files/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1811FDA91F142650003339E9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1811FDAA1F142650003339E9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
+		1811FDAE1F1427A9003339E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		4F29489FB2101FD6FDE4DC17 /* Pods-SaveMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaveMe/Pods-SaveMe.debug.xcconfig"; sourceTree = "<group>"; };
+		C1FDC99C30397AA3F9846BA6 /* Pods-SaveMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaveMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaveMe/Pods-SaveMe.release.xcconfig"; sourceTree = "<group>"; };
+		E9DBD8A742EB84E687EDE04C /* Pods_SaveMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaveMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD0CF67A050D23E2310ACCE /* Pods_SaveMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +48,8 @@
 			children = (
 				1811FD901F142533003339E9 /* SaveMe */,
 				1811FD8F1F142533003339E9 /* Products */,
+				5E4FC133E334C28BA8DFB711 /* Pods */,
+				222962336FD22B4E7FEBA75A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +65,55 @@
 			isa = PBXGroup;
 			children = (
 				1811FD911F142533003339E9 /* AppDelegate.swift */,
-				1811FD931F142533003339E9 /* ViewController.swift */,
-				1811FD951F142533003339E9 /* Main.storyboard */,
+				1811FDAD1F142661003339E9 /* Storyboards */,
+				1811FDA81F142618003339E9 /* Supporting Files */,
+				1811FDA51F1425E9003339E9 /* View Controllers */,
 				1811FD981F142533003339E9 /* Assets.xcassets */,
-				1811FD9A1F142533003339E9 /* LaunchScreen.storyboard */,
-				1811FD9D1F142533003339E9 /* Info.plist */,
 			);
 			path = SaveMe;
+			sourceTree = "<group>";
+		};
+		1811FDA51F1425E9003339E9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1811FDA31F1425E2003339E9 /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1811FDA81F142618003339E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1811FDA91F142650003339E9 /* LaunchScreen.storyboard */,
+				1811FDAE1F1427A9003339E9 /* Info.plist */,
+				1811FDA61F142612003339E9 /* GoogleService-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1811FDAD1F142661003339E9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1811FDAA1F142650003339E9 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		222962336FD22B4E7FEBA75A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9DBD8A742EB84E687EDE04C /* Pods_SaveMe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E4FC133E334C28BA8DFB711 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F29489FB2101FD6FDE4DC17 /* Pods-SaveMe.debug.xcconfig */,
+				C1FDC99C30397AA3F9846BA6 /* Pods-SaveMe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1811FDA01F142533003339E9 /* Build configuration list for PBXNativeTarget "SaveMe" */;
 			buildPhases = (
+				60F0CEBD23166BF24CECF1A3 /* [CP] Check Pods Manifest.lock */,
 				1811FD8A1F142533003339E9 /* Sources */,
 				1811FD8B1F142533003339E9 /* Frameworks */,
 				1811FD8C1F142533003339E9 /* Resources */,
+				F7F91FF50854AAFC8CAE1A2A /* [CP] Embed Pods Frameworks */,
+				71BC4CAA6DDEAFF1EB35580B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,44 +179,75 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1811FD9C1F142533003339E9 /* LaunchScreen.storyboard in Resources */,
+				1811FDAB1F142650003339E9 /* LaunchScreen.storyboard in Resources */,
+				1811FDA71F142612003339E9 /* GoogleService-Info.plist in Resources */,
 				1811FD991F142533003339E9 /* Assets.xcassets in Resources */,
-				1811FD971F142533003339E9 /* Main.storyboard in Resources */,
+				1811FDAF1F1427A9003339E9 /* Info.plist in Resources */,
+				1811FDAC1F142650003339E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60F0CEBD23166BF24CECF1A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		71BC4CAA6DDEAFF1EB35580B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveMe/Pods-SaveMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7F91FF50854AAFC8CAE1A2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaveMe/Pods-SaveMe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1811FD8A1F142533003339E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1811FD941F142533003339E9 /* ViewController.swift in Sources */,
+				1811FDA41F1425E2003339E9 /* ViewController.swift in Sources */,
 				1811FD921F142533003339E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1811FD951F142533003339E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1811FD961F142533003339E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1811FD9A1F142533003339E9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1811FD9B1F142533003339E9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1811FD9E1F142533003339E9 /* Debug */ = {
@@ -259,10 +345,11 @@
 		};
 		1811FDA11F142533003339E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F29489FB2101FD6FDE4DC17 /* Pods-SaveMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MZY793WJGF;
-				INFOPLIST_FILE = SaveMe/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SaveMe/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.STH.SaveMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -272,10 +359,11 @@
 		};
 		1811FDA21F142533003339E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1FDC99C30397AA3F9846BA6 /* Pods-SaveMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MZY793WJGF;
-				INFOPLIST_FILE = SaveMe/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SaveMe/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.STH.SaveMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +390,7 @@
 				1811FDA21F142533003339E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
