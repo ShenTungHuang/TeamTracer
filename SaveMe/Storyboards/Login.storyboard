@@ -23,9 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuR-Ya-ToP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SaveMe !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-eL-7U0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trace Me !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcN-eL-7U0">
                                         <rect key="frame" x="0.0" y="8" width="375" height="67"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="67" id="cKJ-K6-EGc"/>
@@ -34,7 +34,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sing up to setting for help list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKV-V4-b2h">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sing up to setting for friend list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKV-V4-b2h">
                                         <rect key="frame" x="0.0" y="83" width="375" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="g35-ur-qy9"/>
@@ -56,19 +56,18 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfH-aa-bGA">
-                                <rect key="frame" x="35" y="239" width="305" height="44"/>
-                                <color key="backgroundColor" red="0.2196078431372549" green="0.59215686274509804" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="35" y="195" width="305" height="44"/>
+                                <color key="backgroundColor" red="0.31764705882352939" green="0.63529411764705879" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8RW-ia-H3l"/>
                                 </constraints>
                                 <state key="normal" title="Register or Log In"/>
                                 <connections>
                                     <action selector="loginButtonTapped:" destination="HUn-fK-qpL" eventType="touchUpInside" id="8YH-Q8-G6F"/>
-                                    <segue destination="ODN-VO-hKi" kind="show" identifier="toCreateUsername" id="0Ad-1X-NTC"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gfH-aa-bGA" firstAttribute="leading" secondItem="0bP-ey-0NQ" secondAttribute="leading" constant="35" id="0Pk-En-LHl"/>
                             <constraint firstItem="SuR-Ya-ToP" firstAttribute="top" secondItem="LzX-b6-L1Q" secondAttribute="bottom" id="31O-O0-3Un"/>
@@ -79,10 +78,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RND-UT-pgF"/>
+                    <connections>
+                        <outlet property="registerButton" destination="gfH-aa-bGA" id="oSh-m4-m9s"/>
+                        <segue destination="ODN-VO-hKi" kind="show" identifier="toCreateUsername" id="kxw-MN-WKi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdk-yi-RnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="471"/>
+            <point key="canvasLocation" x="797.60000000000002" y="470.91454272863569"/>
         </scene>
         <!--Create Username View Controller-->
         <scene sceneID="ZC3-O5-j1W">
@@ -123,12 +126,12 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpN-Dl-ZmY">
                                         <rect key="frame" x="0.0" y="156.5" width="273" height="44"/>
-                                        <color key="backgroundColor" red="0.38039215686274508" green="0.6588235294117647" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.31764705882352939" green="0.63529411764705879" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="a1e-Ce-ep8"/>
                                         </constraints>
                                         <state key="normal" title="Set">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.8784313725490196" green="0.90980392156862744" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="nextButtonTapped:" destination="ODN-VO-hKi" eventType="touchUpInside" id="IK0-F1-jos"/>

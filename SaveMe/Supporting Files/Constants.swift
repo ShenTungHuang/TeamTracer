@@ -20,4 +20,9 @@ struct Constants {
         static let username = "username"
     }
     
+    struct License {
+        static let fireBase = ""
+        static let google = ""
+    }
+    
 }
