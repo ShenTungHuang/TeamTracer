@@ -23,6 +23,7 @@
 		1811FDC81F153BA5003339E9 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FDC71F153BA5003339E9 /* CreateUsernameViewController.swift */; };
 		1811FDCD1F153CD5003339E9 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FDCC1F153CD5003339E9 /* ListTableViewCell.swift */; };
 		1811FDCF1F154B0C003339E9 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811FDCE1F154B0C003339E9 /* QRCodeViewController.swift */; };
+		184C96A11F35317E009B7E84 /* FriendMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C96A01F35317E009B7E84 /* FriendMapViewController.swift */; };
 		184E3E091F2271190098ED21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E3E081F2271190098ED21 /* MapViewController.swift */; };
 		189362171F2F98B800C042FB /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189362161F2F98B800C042FB /* CheckboxButton.swift */; };
 		18A107751F17DEDB0018AD79 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A107741F17DEDB0018AD79 /* AddFriendViewController.swift */; };
@@ -65,6 +66,7 @@
 		1811FDC71F153BA5003339E9 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUsernameViewController.swift; path = "View Controllers/CreateUsernameViewController.swift"; sourceTree = "<group>"; };
 		1811FDCC1F153CD5003339E9 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTableViewCell.swift; path = Views/ListTableViewCell.swift; sourceTree = "<group>"; };
 		1811FDCE1F154B0C003339E9 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeViewController.swift; path = "View Controllers/QRCodeViewController.swift"; sourceTree = "<group>"; };
+		184C96A01F35317E009B7E84 /* FriendMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendMapViewController.swift; path = "View Controllers/FriendMapViewController.swift"; sourceTree = "<group>"; };
 		184E3E081F2271190098ED21 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "View Controllers/MapViewController.swift"; sourceTree = "<group>"; };
 		186669971F1D6AF5000A1B00 /* SaveMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SaveMe.entitlements; sourceTree = "<group>"; };
 		189362161F2F98B800C042FB /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckboxButton.swift; path = Extension/CheckboxButton.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				1811FDCE1F154B0C003339E9 /* QRCodeViewController.swift */,
 				18A107741F17DEDB0018AD79 /* AddFriendViewController.swift */,
 				184E3E081F2271190098ED21 /* MapViewController.swift */,
+				184C96A01F35317E009B7E84 /* FriendMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			files = (
 				18A107911F1826050018AD79 /* IQUIView+Hierarchy.swift in Sources */,
 				18A107751F17DEDB0018AD79 /* AddFriendViewController.swift in Sources */,
+				184C96A11F35317E009B7E84 /* FriendMapViewController.swift in Sources */,
 				18A107971F1826050018AD79 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				1811FDB51F1432C9003339E9 /* User.swift in Sources */,
 				18A107931F1826050018AD79 /* IQUIWindow+Hierarchy.swift in Sources */,

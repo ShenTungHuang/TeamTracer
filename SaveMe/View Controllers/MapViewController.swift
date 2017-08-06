@@ -29,7 +29,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     lazy var locationButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        button.setTitle("Location", for: .normal)
         button.setImage(#imageLiteral(resourceName: "ViewButton"), for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.isUserInteractionEnabled = true
@@ -88,6 +87,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         print("map to list")
         latitude = nil
         longitude = nil
+        if ( timer.isValid ) {
+            timer.invalidate()
+        }
+        
+        let ref_loc = Database.database().reference().child("users").child(self.uid!).child("friends").child(User.current.username).child("location")
+        ref_loc.setValue(nil)
 //        uid = nil
 //        dispname = nil
     }
@@ -95,17 +100,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func locationButtonTapper() {
         print("print all location")
         if let location = locationManager.location {
-            let temp_latitude = ( latitude! + Float(location.coordinate.latitude) ) / 2
-            let temp_longitude = ( longitude! + Float(location.coordinate.longitude) ) / 2
-            let dist = location.distance(from: CLLocation(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!)))
-            let  zoomSize: Float = getZoomSize(distance: Float(dist))
-
-            let camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees(temp_latitude), longitude: CLLocationDegrees(temp_longitude), zoom: zoomSize)
-            mapView.isMyLocationEnabled = true
-            mapView.camera = camera
-            
-            setupLocationButton()
+            if ( (latitude != nil) || (longitude != nil) ) {
+                let temp_latitude = ( latitude! + Float(location.coordinate.latitude) ) / 2
+                let temp_longitude = ( longitude! + Float(location.coordinate.longitude) ) / 2
+                let dist = location.distance(from: CLLocation(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!)))
+                let  zoomSize: Float = getZoomSize(distance: Float(dist))
+                
+                let camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees(temp_latitude), longitude: CLLocationDegrees(temp_longitude), zoom: zoomSize)
+                mapView.isMyLocationEnabled = true
+                mapView.camera = camera
+            }
         }
+        setupLocationButton()
     }
     
     func setupLocationButton() {
@@ -120,6 +126,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func tickDown() {
+        print("Map view tickDown")
         let ref_loc = Database.database().reference().child("users").child(self.uid!).child("location")
         ref_loc.observeSingleEvent(of: .value, with: { (snapshot) in
             if let loc = snapshot.value as? [String : Any] {
@@ -155,6 +162,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         })
+        sendLocation()
     }
     
     func getZoomSize(distance dist: Float) -> Float {
@@ -203,6 +211,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         return zoomSize
+    }
+    
+    func sendLocation() {
+        if let location = locationManager.location {
+            let loc = ["latitude": location.coordinate.latitude, "longitude": location.coordinate.longitude]
+            let ref_loc = Database.database().reference().child("users").child(self.uid!).child("friends").child(User.current.username).child("location")
+            ref_loc.setValue(loc)
+        }
     }
     
     //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

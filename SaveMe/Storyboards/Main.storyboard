@@ -46,7 +46,6 @@
                                 </state>
                                 <connections>
                                     <action selector="setButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T49-lw-gs5"/>
-                                    <segue destination="TfC-Kr-h0G" kind="show" identifier="gotoListViewController" id="hm1-sf-tig"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sFq-Xb-gs1">
@@ -92,7 +91,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.83137254901960778" green="0.86274509803921573" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gF1-KA-NqB" firstAttribute="top" secondItem="sFq-Xb-gs1" secondAttribute="bottom" constant="22" id="2LP-77-cd4"/>
                             <constraint firstItem="sFq-Xb-gs1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="955-zV-5ZO"/>
                             <constraint firstItem="RIO-u7-tB4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="93" id="FhD-5d-tEo"/>
                             <constraint firstItem="sFq-Xb-gs1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OL9-6M-dqE"/>
@@ -110,6 +108,8 @@
                         <outlet property="redButton" destination="gF1-KA-NqB" id="XiV-dU-2TZ"/>
                         <outlet property="secondLabel" destination="SES-gb-yoN" id="A5F-01-FGW"/>
                         <segue destination="TfC-Kr-h0G" kind="show" identifier="tappedNotificationSegue" id="sC1-kS-KfS"/>
+                        <segue destination="2g1-3O-2Wn" kind="show" identifier="toFriendsMap" id="Tca-FR-jYS"/>
+                        <segue destination="TfC-Kr-h0G" kind="show" identifier="toFriendsList" id="TvF-KM-zT1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -175,7 +175,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97m-TY-hA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DhM-YL-X2c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-453"/>
+            <point key="canvasLocation" x="3560.8000000000002" y="-453.82308845577217"/>
         </scene>
         <!--Map-->
         <scene sceneID="kV5-5f-m5c">
@@ -203,7 +203,7 @@
             </objects>
             <point key="canvasLocation" x="2735" y="365"/>
         </scene>
-        <!--SaveMe List-->
+        <!--Friends List-->
         <scene sceneID="H6R-0w-hKd">
             <objects>
                 <tableViewController storyboardIdentifier="ListTableViewController" id="cPY-Ka-csw" customClass="ListTableViewController" customModule="SaveMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,7 +245,7 @@
                             <outlet property="delegate" destination="cPY-Ka-csw" id="Jy3-Uz-tGB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SaveMe List" id="aeu-hG-MBn">
+                    <navigationItem key="navigationItem" title="Friends List" id="aeu-hG-MBn">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="mYM-Z8-hjm">
                             <connections>
                                 <segue destination="4L3-ps-2xo" kind="unwind" unwindAction="unwindToViewController:" id="G9r-OR-V0R"/>
@@ -381,6 +381,32 @@
             </objects>
             <point key="canvasLocation" x="2622" y="1170"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="NxP-0k-UQD">
+            <objects>
+                <viewController id="o0a-MN-2pl" customClass="FriendMapViewController" customModule="SaveMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d5x-Kc-0WZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="y5M-Hr-oBJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uTQ-Qk-8Zd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="UPM-NJ-yrp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="qog-sa-bxD">
+                            <connections>
+                                <segue destination="eVV-h9-HAb" kind="unwind" unwindAction="unwindToViewController:" id="82F-A6-4Qm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUw-0R-y2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eVV-h9-HAb" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1650" y="-635"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="l48-7m-H2P">
             <objects>
@@ -415,14 +441,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m74-6o-Sez" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-1156"/>
+            <point key="canvasLocation" x="3560.8000000000002" y="-1156.3718140929536"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nN6-EX-sip">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2g1-3O-2Wn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="XIU-rS-YbE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o0a-MN-2pl" kind="relationship" relationship="rootViewController" id="B8L-Fx-Uap"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xL1-lx-O7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="854" y="-634"/>
         </scene>
     </scenes>
     <resources>
         <image name="ArrowImage" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AXy-12-Lec"/>
-        <segue reference="sC1-kS-KfS"/>
+        <segue reference="TvF-KM-zT1"/>
+        <segue reference="oxy-Gd-Ye8"/>
     </inferredMetricsTieBreakers>
 </document>

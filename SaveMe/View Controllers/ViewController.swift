@@ -43,6 +43,7 @@ class ViewController: UIViewController {
             print("in danger status")
 //            redButton.setTitle("Safe Now", for: .normal)
             redButton.setImage(#imageLiteral(resourceName: "StopTrackButton"), for: .normal)
+            friendListButton.setImage(#imageLiteral(resourceName: "FriendsMapButton"), for: .normal)
             secondLabel.isHidden = true
             clockLabel.isHidden = true
             firstLabel.text = "Tap to stop share location."
@@ -59,6 +60,7 @@ class ViewController: UIViewController {
             print("not in danger statue")
 //            redButton.setTitle("TrackMe", for: .normal)
             redButton.setImage(#imageLiteral(resourceName: "TrackButton"), for: .normal)
+            friendListButton.setImage(#imageLiteral(resourceName: "FriendListButton"), for: .normal)
             secondLabel.isHidden = false
             clockLabel.isHidden = false
             firstLabel.text = "Autorun after"
@@ -85,6 +87,7 @@ class ViewController: UIViewController {
             print("SaveMe button tapped")
 //            redButton.setTitle("Safe Now", for: .normal)
             redButton.setImage(#imageLiteral(resourceName: "StopTrackButton"), for: .normal)
+            friendListButton.setImage(#imageLiteral(resourceName: "FriendsMapButton"), for: .normal)
             secondLabel.isHidden = true
             clockLabel.isHidden = true
             firstLabel.text = "Tap to stop share location."
@@ -102,6 +105,7 @@ class ViewController: UIViewController {
             print("Safe Now button tapped")
 //            redButton.setTitle("TrackMe", for: .normal)
             redButton.setImage(#imageLiteral(resourceName: "TrackButton"), for: .normal)
+            friendListButton.setImage(#imageLiteral(resourceName: "FriendListButton"), for: .normal)
             secondLabel.isHidden = false
             clockLabel.isHidden = false
             firstLabel.text = "Autorun after"
@@ -118,18 +122,30 @@ class ViewController: UIViewController {
     }
 
     @IBAction func setButtonTapped(_ sender: Any?) {
-        if ( viewTimer.isValid ) {
-            viewTimer.invalidate()
-        }
-        
         print("Setting button tapper")
+        if ( UserDefaults.standard.bool(forKey: "HasAskedForHelp") == false ) {
+            print("go to friend list")
+            if let timer  = self.viewTimer {
+                timer.invalidate()
+            }
+            self.performSegue(withIdentifier: "toFriendsList", sender: nil)
+        } else {
+            print("go to friend map")
+            if let timer = self.viewTimer {
+                timer.invalidate()
+            }
+            self.performSegue(withIdentifier: "toFriendsMap", sender: nil)
+        }
     }
     
     //MARK: - IBAction func unwindToListNotesViewController
     @IBAction func unwindToViewController(_ segue: UIStoryboardSegue) {
         myTimeCoumnt = 24
         clockLabel.text = String(myTimeCoumnt)
-        viewTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.tickDown), userInfo: nil, repeats: true)
+        if ( UserDefaults.standard.bool(forKey: "HasAskedForHelp") == false ) {
+            viewTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.tickDown), userInfo: nil, repeats: true)
+        }
+        
     }
     
     func tickDown() {
@@ -138,7 +154,7 @@ class ViewController: UIViewController {
         myTimeCoumnt = myTimeCoumnt - 1
         
         if ( myTimeCoumnt == -1 ) {
-            viewTimer.invalidate()
+            self.viewTimer.invalidate()
             self.saveMeButtonTapped(nil)
         }
     }

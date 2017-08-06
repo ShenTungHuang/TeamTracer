@@ -189,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func tickDown() {
-        print("tick")
+        print("appdelegate tick")
         
         if ( refreshingLocation == true ) {
             // feedback Location
