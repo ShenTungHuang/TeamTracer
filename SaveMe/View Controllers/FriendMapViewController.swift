@@ -68,14 +68,14 @@ class FriendMapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("friend map to list")
+//        print("friend map to list")
         if ( timer.isValid ) {
             timer.invalidate()
         }
     }
     
     func tickDown() {
-        print("friends map tickDown")
+//        print("friends map tickDown")
         
         getTrackers()
     }
@@ -91,13 +91,13 @@ class FriendMapViewController: UIViewController, CLLocationManagerDelegate {
                     if let Dict = friend.value as? [String : Any] {
                         if ( Dict["location"] != nil ) {
                             let loc = Dict["location"] as? [String : Any]
-                            self.trackers.append(FriendLocation(latitude: CLLocationDegrees((loc?["latitude"] as? Float)!), longitude: CLLocationDegrees((loc?["longitude"] as? Float)!), dispname: (Dict["dispname"] as? String)!))
+                            self.trackers.append(FriendLocation(latitude: CLLocationDegrees(((loc?["latitude"] as? NSNumber)?.floatValue)!), longitude: CLLocationDegrees(((loc?["longitude"] as? NSNumber)?.floatValue)!), dispname: (Dict["dispname"] as? String)!))
                             self.markers.append(GMSMarker())
                             
-                            let dist = self.locationManager.location?.distance(from: CLLocation(latitude: CLLocationDegrees((loc?["latitude"] as? Float)!), longitude: CLLocationDegrees((loc?["longitude"] as? Float)!)))
+                            let dist = self.locationManager.location?.distance(from: CLLocation(latitude: CLLocationDegrees(((loc?["latitude"] as? NSNumber)?.floatValue)!), longitude: CLLocationDegrees(((loc?["longitude"] as? NSNumber)?.floatValue)!)))
                             self.longestDistance = (self.longestDistance > Float(dist!) * 2) ? self.longestDistance : Float(dist!) * 2
                             
-                            print("get tracking friend location")
+//                            print("get tracking friend location")
                         } else {
                             self.trackers.append(FriendLocation(latitude: nil, longitude: nil, dispname: (Dict["dispname"] as? String)!))
                             self.markers.append(GMSMarker())
@@ -124,11 +124,11 @@ class FriendMapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationButtonTapper() {
-        print("print all location")
+//        print("print all location")
         if let location = locationManager.location {
             let  zoomSize: Float = getZoomSize(distance: longestDistance)
             
-            let camera = GMSCameraPosition.camera(withLatitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!, zoom: zoomSize)
+            let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomSize)
             mapView.isMyLocationEnabled = true
             mapView.camera = camera
             
@@ -195,15 +195,5 @@ class FriendMapViewController: UIViewController, CLLocationManagerDelegate {
         
         return zoomSize
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

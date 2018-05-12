@@ -40,8 +40,7 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         if ( UserDefaults.standard.bool(forKey: "HasAskedForHelp") == true ) {
-            print("in danger status")
-//            redButton.setTitle("Safe Now", for: .normal)
+//            print("in danger status")
             redButton.setImage(#imageLiteral(resourceName: "StopTrackButton"), for: .normal)
             friendListButton.setImage(#imageLiteral(resourceName: "FriendsMapButton"), for: .normal)
             secondLabel.isHidden = true
@@ -51,14 +50,9 @@ class ViewController: UIViewController {
             AppDelegate.shared().sendNotification = true
             AppDelegate.shared().refreshingLocation = UserDefaults.standard.bool(forKey: "HasAskedForHelp")
             AppDelegate.shared().refreshLocation()
-
-            DispatchQueue.main.async {
-                UIApplication.shared.perform(#selector(URLSessionTask.suspend))
-            }
         } else {
             viewTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.tickDown), userInfo: nil, repeats: true)
-            print("not in danger statue")
-//            redButton.setTitle("TrackMe", for: .normal)
+//            print("not in danger statue")
             redButton.setImage(#imageLiteral(resourceName: "TrackButton"), for: .normal)
             friendListButton.setImage(#imageLiteral(resourceName: "FriendListButton"), for: .normal)
             secondLabel.isHidden = false
@@ -84,8 +78,7 @@ class ViewController: UIViewController {
     @IBAction func saveMeButtonTapped(_ sender: Any?) {
         if ( UserDefaults.standard.bool(forKey: "HasAskedForHelp") == false ) {
             UserDefaults.standard.set(true, forKey: "HasAskedForHelp")
-            print("SaveMe button tapped")
-//            redButton.setTitle("Safe Now", for: .normal)
+//            print("SaveMe button tapped")
             redButton.setImage(#imageLiteral(resourceName: "StopTrackButton"), for: .normal)
             friendListButton.setImage(#imageLiteral(resourceName: "FriendsMapButton"), for: .normal)
             secondLabel.isHidden = true
@@ -96,14 +89,9 @@ class ViewController: UIViewController {
             AppDelegate.shared().sendNotification = true
             AppDelegate.shared().refreshingLocation = UserDefaults.standard.bool(forKey: "HasAskedForHelp")
             AppDelegate.shared().refreshLocation()
-            
-            DispatchQueue.main.async {
-                UIApplication.shared.perform(#selector(URLSessionTask.suspend))
-            }
         } else {
             UserDefaults.standard.set(false, forKey: "HasAskedForHelp")
-            print("Safe Now button tapped")
-//            redButton.setTitle("TrackMe", for: .normal)
+//            print("Safe Now button tapped")
             redButton.setImage(#imageLiteral(resourceName: "TrackButton"), for: .normal)
             friendListButton.setImage(#imageLiteral(resourceName: "FriendListButton"), for: .normal)
             secondLabel.isHidden = false
@@ -122,15 +110,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func setButtonTapped(_ sender: Any?) {
-        print("Setting button tapper")
+//        print("Setting button tapper")
         if ( UserDefaults.standard.bool(forKey: "HasAskedForHelp") == false ) {
-            print("go to friend list")
+//            print("go to friend list")
             if let timer  = self.viewTimer {
                 timer.invalidate()
             }
             self.performSegue(withIdentifier: "toFriendsList", sender: nil)
         } else {
-            print("go to friend map")
+//            print("go to friend map")
             if let timer = self.viewTimer {
                 timer.invalidate()
             }
@@ -149,7 +137,7 @@ class ViewController: UIViewController {
     }
     
     func tickDown() {
-        print("\(myTimeCoumnt)")
+//        print("\(myTimeCoumnt)")
         clockLabel.text = String(myTimeCoumnt)
         myTimeCoumnt = myTimeCoumnt - 1
         

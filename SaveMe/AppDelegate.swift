@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
@@ -77,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
             
             // For iOS 10 data message (sent via FCM)
-            Messaging.messaging().remoteMessageDelegate = self
+            Messaging.messaging().delegate = self
             
         } else {
             let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -140,23 +141,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         
         // Disconnect previous FCM connection if it exists.
-        Messaging.messaging().disconnect()
+        Messaging.messaging().shouldEstablishDirectChannel = false
         
-        Messaging.messaging().connect { (error) in
-            if error != nil {
-                print("Unable to connect with FCM. \(error?.localizedDescription ?? "")")
-            } else {
-                print("Connected to FCM.")
-            }
-        }
+        Messaging.messaging().shouldEstablishDirectChannel = true // for swift4 Xcode9
+        
+        // for swift3, Xcode8
+//        Messaging.messaging().connect { (error) in
+//            if error != nil {
+//                print("Unable to connect with FCM. \(error?.localizedDescription ?? "")")
+//            } else {
+//                print("Connected to FCM.")
+//            }
+//        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Unable to register for remote notifications: \(error.localizedDescription)")
+//        print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNs token retrieved: \(deviceToken)")
+//        print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
         // FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
@@ -167,8 +171,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        Messaging.messaging().disconnect()
-        print("Disconnected from FCM.")
+        Messaging.messaging().shouldEstablishDirectChannel = false
+//        print("Disconnected from FCM.")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -182,14 +186,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        print("terminate app")
+//        print("terminate app")
         
         let ref_lov = Database.database().reference().child("users").child(User.current.uid).child("location")
         ref_lov.setValue(nil)
     }
     
     func tickDown() {
-        print("appdelegate tick")
+//        print("appdelegate tick")
         
         if ( refreshingLocation == true ) {
             // feedback Location
@@ -211,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 })
                 
                 
-                print("refresh location")
+//                print("refresh location")
             }
         }
     }
@@ -236,7 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func senfNotification() {
         getTok() { (list) in
-            print(list)
+//            print(list)
             for ii in list {
                 let url = NSURL(string: "https://fcm.googleapis.com/fcm/send")!
                 let session = URLSession.shared
@@ -246,11 +250,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
                 
                 let dictionary = ["to": ii,"priority": "high", "time_to_live": 259200, "notification":["body": "I need your help, you can track my location now!","title": "Please track my location", "sound": "default"]] as [String : Any]
-                print(dictionary)
+//                print(dictionary)
                 do {
                     try request.httpBody = JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
                 } catch {
-                    print("fail to add JSON data")
+//                    print("fail to add JSON data")
                 }
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue(Constants.License.fireBase, forHTTPHeaderField: "Authorization")
@@ -336,9 +340,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         DispatchQueue.main.async {
             ListTableViewController.sharedInstance?.retrieveData()
         }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//            ListTableViewController.sharedInstance?.retrieveData()
-//        })
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
@@ -361,11 +362,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("received")
+//        print("received")
     } // add by Grant Goodman 2017/7/17
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-        print("refreshed")
+//        print("refreshed")
     } // add by Grant Goodman 2017/7/17
     
     // Receive data message on iOS 10 devices while app is in the foreground.

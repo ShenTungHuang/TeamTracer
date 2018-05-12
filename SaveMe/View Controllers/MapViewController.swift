@@ -70,7 +70,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 self.performSegue(withIdentifier: "mapToListView", sender: nil)
             })
             let cancelbut = UIAlertAction(title: "CANCEL", style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
-                print("do nothing")
+//                print("do nothing")
             })
             alertController.addAction(gobut)
             alertController.addAction(cancelbut)
@@ -84,7 +84,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("map to list")
+//        print("map to list")
         latitude = nil
         longitude = nil
         if ( timer.isValid ) {
@@ -93,12 +93,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         let ref_loc = Database.database().reference().child("users").child(self.uid!).child("friends").child(User.current.username).child("location")
         ref_loc.setValue(nil)
-//        uid = nil
-//        dispname = nil
     }
     
     func locationButtonTapper() {
-        print("print all location")
+//        print("print all location")
         if let location = locationManager.location {
             if ( (latitude != nil) || (longitude != nil) ) {
                 let temp_latitude = ( latitude! + Float(location.coordinate.latitude) ) / 2
@@ -126,13 +124,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func tickDown() {
-        print("Map view tickDown")
+//        print("Map view tickDown")
         let ref_loc = Database.database().reference().child("users").child(self.uid!).child("location")
         ref_loc.observeSingleEvent(of: .value, with: { (snapshot) in
             if let loc = snapshot.value as? [String : Any] {
-                self.latitude = (loc["latitude"] as? Float)!
-                self.longitude = (loc["longitude"] as? Float)!
-                //print("latitude: \(self.latitude), longitude: \(self.longitude)")
+                self.latitude = (loc["latitude"] as? NSNumber)?.floatValue
+                self.longitude = (loc["longitude"] as? NSNumber)?.floatValue
+//                print("latitude: \(self.latitude), longitude: \(self.longitude)")
 
                 self.marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude!), longitude: CLLocationDegrees(self.longitude!))
                 self.marker.title = self.dispname
@@ -142,7 +140,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let alertController: UIAlertController
                     alertController = UIAlertController(title: "Great !", message: "\"\(self.dispname!)\" re-update new location.", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                        print("OK button tapped")
+//                        print("OK button tapped")
                     })
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil)
@@ -154,7 +152,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let alertController: UIAlertController
                     alertController = UIAlertController(title: "Sorry !", message: "\"\(self.dispname!)\" doesn't update new location.", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alert :UIAlertAction!) in
-                        print("OK button tapped")
+//                        print("OK button tapped")
                     })
                     alertController.addAction(okAction)
                     self.present(alertController, animated: true, completion: nil)
@@ -220,20 +218,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             ref_loc.setValue(loc)
         }
     }
-    
-    //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    //        let userLocation = locations.last
-    //        let camera = GMSCameraPosition.camera(withLatitude: userLocation!.coordinate.latitude,
-    //                                              longitude: userLocation!.coordinate.longitude,
-    //                                              zoom: 13.0)
-    //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-    //        mapView.isMyLocationEnabled = true
-    //
-    //        DispatchQueue.main.async {
-    //            self.view = self.mapView
-    //        }
-    //
-    //        locationManager.stopUpdatingLocation()
-    //    }
     
 }

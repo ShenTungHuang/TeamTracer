@@ -8,7 +8,7 @@ It's my first APP when studying in MakeSchool.
 4. Can open the map to see which friend are tracking you.
 5. Can open map to track your friend after receiving notification.
 
->Xcode 8<br />
->Swift 3<br />
+>Xcode 9<br />
+>Swift 4<br />
 >Google Map<br />
 >Fire Base

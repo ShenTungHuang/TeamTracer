@@ -37,12 +37,6 @@ class ListTableViewController: UITableViewController {
         
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: CGFloat((0xE0E0E0 & 0xFF0000) >> 16)/255.0, green: CGFloat((0xE0E0E0 & 0xFF00) >> 8)/255.0, blue: CGFloat(0xE0E0E0 & 0xFF)/255.0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.init(red: CGFloat((0x424242 & 0xFF0000) >> 16)/255.0, green: CGFloat((0x424242 & 0xFF00) >> 8)/255.0, blue: CGFloat(0x424242 & 0xFF)/255.0, alpha: 1)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         retrieveData()
     }
 
@@ -75,7 +69,6 @@ class ListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            //            tableView.deleteRows(at: [indexPath], with: .fade)
             let delref = Database.database().reference().child("users").child(User.current.uid).child("friends").child(friends[indexPath.row].userNmae)
             delref.setValue(nil)
             
@@ -105,23 +98,17 @@ class ListTableViewController: UITableViewController {
                 addFriendViewController.send_b = true
                 newFriend = nil
             } else if ( identifier == "toEditSegue" ) {
-                print("goto friend setting")
+//                print("goto friend setting")
                 let indexPath = tableView.indexPathForSelectedRow!.row
                 let addFriendViewController = segue.destination as! AddFriendViewController
                 addFriendViewController.username = self.friends[indexPath].userNmae
                 addFriendViewController.dispname = self.friends[indexPath].dispName
                 addFriendViewController.send_b = self.friends[indexPath].sendSet
             } else if ( identifier == "gotoQR" ) {
-                
-//                let ref = Database.database().reference().child("users").child(User.current.uid).child("friends")
-//                ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//                    if let friendlist = snapshot.children.allObjects as? [DataSnapshot] {
                         let qrViewController = segue.destination as! QRCodeViewController
                         qrViewController.numberOfFriend = self.friends.count
-//                    }
-//                })
             } else if ( identifier == "toMapSegue" ) {
-                print("goto map")
+//                print("goto map")
                 let indexPath = tableView.indexPathForSelectedRow!.row
                 let mpaViewController = segue.destination as! MapViewController
                 mpaViewController.uid = self.friends[indexPath].uid
@@ -136,18 +123,18 @@ class ListTableViewController: UITableViewController {
         retrieveData()
         if let identifier = segue.identifier {
             if ( identifier == "qrcancel" ) {
-                print("back from qr cancel")
+//                print("back from qr cancel")
                 if let qrViewController = segue.source as? QRCodeViewController {
                     let dataRecieved = qrViewController.newFried
                     if ( dataRecieved != nil ) {
-                        print("good")
+//                        print("good")
                         gotNewFiend = true
                         newFriend = dataRecieved
                         qrViewController.newFried = nil
                     }
                 }
             } else if ( identifier == "setunwindsegue" ) {
-                print("set tapped and back")
+//                print("set tapped and back")
                 newFriend = nil
             } else if ( identifier == "mapToListView" ) {
             }
@@ -160,43 +147,7 @@ class ListTableViewController: UITableViewController {
             User(snapshot: snapshot, completion: { (user) in
                 self.friends = user.friends
             })
-//            let friend = User(snapshot: snapshot, completion: { () in
-//                self.friends = friend.friends
-//            })
-
         })
     }
-    
-    // MARK: - Table view data source
-    
-    /*
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
- */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 }

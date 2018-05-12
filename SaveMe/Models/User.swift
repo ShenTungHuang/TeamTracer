@@ -62,12 +62,12 @@ class User: NSObject {
                 
                 let ref_loc = Database.database().reference().child("users").child((temp?["uid"] as? String)!).child("location/latitude")
                 ref_loc.observeSingleEvent(of: .value, with: { (data) in
-                    if (data.value as? Float) != nil {
-                        print("with location root")
+                    if (data.value as? NSNumber)?.floatValue != nil {
+//                        print("with location root")
                         self.friends.append(Friend(userNmae: key, dispName: (temp?["dispname"] as? String)!, sendSet: (temp?["send"] as? Bool)!, uid: (temp?["uid"] as? String)!, tok: (temp?["tok"] as? String)!, inDanger: true))
 
                     } else {
-                        print("without location root")
+//                        print("without location root")
                         self.friends.append(Friend(userNmae: key, dispName: (temp?["dispname"] as? String)!, sendSet: (temp?["send"] as? Bool)!, uid: (temp?["uid"] as? String)!, tok: (temp?["tok"] as? String)!, inDanger: false))
                     }
                     pendingCallCounter -= 1

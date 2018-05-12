@@ -35,7 +35,7 @@ class AddFriendViewController: UIViewController {
     }
 
     @IBAction func setButtonTapped(_ sender: UIButton) {
-        print("set button tapped")
+//        print("set button tapped")
         
         let ref_send = Database.database().reference().child("users").child(User.current.uid).child("friends").child(username).child("send")
         ref_send.setValue(sendSwitch.isOn)

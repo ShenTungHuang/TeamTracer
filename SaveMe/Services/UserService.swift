@@ -18,7 +18,6 @@ struct UserService {
         
         let ref = Database.database().reference().child("users").child(firUser.uid)
         ref.setValue(userAttrs) { (error, ref) in
-//        ref.updateChildValues(userAttrs) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
@@ -28,8 +27,6 @@ struct UserService {
                 User(snapshot: snapshot, completion: { (user) in
                     completion(user)
                 })
-//                let user = User(snapshot: snapshot)
-//                completion(user)
             })
         }
     }
@@ -47,18 +44,6 @@ struct UserService {
             })
             completion(nil)
         })
-
-//        let ref = Database.database().reference().child("users").child(uid)
-//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//            guard let user = User(snapshot: snapshot) else {
-//                return completion(nil)
-//            }
-//            
-////            let userAttrs = ["tok": InstanceID.instanceID().token()!]
-//            let ref_tok = Database.database().reference().child("users").child(uid).child("tok")
-//            ref_tok.setValue(InstanceID.instanceID().token()!)
-//            completion(user)
-//        })
     }
     
 }

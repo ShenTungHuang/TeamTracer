@@ -21,7 +21,7 @@ struct Constants {
     }
     
     struct License {
-        static let fireBase = "key="
+        static let fireBase = ""
         static let google = ""
     }
     

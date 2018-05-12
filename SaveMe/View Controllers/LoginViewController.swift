@@ -23,7 +23,6 @@ class LoginViewController: UIViewController {
     // for generate new button
     lazy var agreementButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        button.setTitle("Agreement", for: .normal)
         button.setImage(#imageLiteral(resourceName: "AgreementButton"), for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.isUserInteractionEnabled = true
@@ -52,15 +51,15 @@ class LoginViewController: UIViewController {
         let authViewController = authUI.authViewController()
         present(authViewController, animated: true)
         
-        print("login button tapped")
+//        print("login button tapped")
     }
     
     static func test() {
-        print("called by AppDelegate")
+//        print("called by AppDelegate")
     }
     
     func alertCheckBoxDidChangeView(checkBox: CheckboxButton){
-        print("checkBox clicked = \(checkBox.on)")
+//        print("checkBox clicked = \(checkBox.on)")
         checkAgreement = checkBox.on
     }
     
@@ -82,15 +81,15 @@ class LoginViewController: UIViewController {
         let titleText  = "Terms of Service"
         var titleAttribute = NSMutableAttributedString()
         titleAttribute = NSMutableAttributedString(string: titleText as String, attributes: [NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 20.0)!])
-        titleAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location:0,length:titleText.characters.count))
+        titleAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location:0,length:titleText.count))
         alertController.setValue(titleAttribute, forKey: "attributedTitle")
         // Change Message With Color and Font
-        let messageText  = "\n1. If your are in danger, please make sure call 911 at first.\n\n2. Please make sure use this APP with internet service\n\n3. It's not a save APP, it just notice your friends to track your dynamic location.\n\n"
+        let messageText  = "\n1. If your are in danger, please make sure call 911 at first.\n\n2. Please make sure use this APP with internet service.\n\n3. It's not a save APP, it just notice your friends to track your realtime location.\n\n"
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.left
         var messageAttribute = NSMutableAttributedString()
         messageAttribute = NSMutableAttributedString(string: messageText as String, attributes: [NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 16.0)!])
-        messageAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSRange(location:0,length:messageText.characters.count))
+        messageAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.black, range: NSRange(location:0,length:messageText.count))
         messageAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location:49,length:3))
         alertController.setValue(messageAttribute, forKey: "attributedMessage")
         
@@ -118,20 +117,20 @@ class LoginViewController: UIViewController {
         }
         
         let disagreeAction = UIAlertAction(title: "Disagree", style: UIAlertActionStyle.default) { (action) in
-            print("disagree button tapped")
+//            print("disagree button tapped")
             self.registerButton.isEnabled = false
             self.registerButton.backgroundColor = UIColor.gray
             self.setupAgreementButton()
         }
         let accepyAction = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (action) in
-            print("accept button tapped")
+//            print("accept button tapped")
             if ( self.checkAgreement == true ) {
-                print("accept OK")
+//                print("accept OK")
                 self.registerButton.isEnabled = true
                 self.registerButton.backgroundColor = self.buttonColor
                 self.agreementButton.isHidden = true
             } else  {
-                print("not check")
+//                print("not check")
                 self.present(alertController, animated: true)
             }
         }
@@ -140,16 +139,6 @@ class LoginViewController: UIViewController {
         
         present(alertController, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -171,7 +160,7 @@ extension LoginViewController: FUIAuthDelegate {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
                 
-                print("Welcom back \(user.username)")
+//                print("Welcom back \(user.username)")
                 
                 let initialViewController = UIStoryboard.initialViewController(for: .main)
                 self.view.window?.rootViewController = initialViewController

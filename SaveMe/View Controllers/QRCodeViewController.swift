@@ -35,8 +35,6 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                               AVMetadataObjectTypePDF417Code,
                               AVMetadataObjectTypeQRCode]
     /* new friend information */
-//    var friendUid: String?
-//    var friendName: String?
     var numberOfFriend: Int = 0
     var newFried: Friend? {
         didSet {
@@ -82,16 +80,6 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             
             // Move the message label and top bar to the front
             view.bringSubview(toFront: showQRCodeButton)
-
-//            // Initialize QR Code Frame to highlight the QR code
-//            qrCodeFrameView = UIView()
-//            
-//            if let qrCodeFrameView = qrCodeFrameView {
-//                qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
-//                qrCodeFrameView.layer.borderWidth = 2
-//                view.addSubview(qrCodeFrameView)
-//                view.bringSubview(toFront: qrCodeFrameView)
-//            }
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
             print(error)
@@ -111,7 +99,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         // Pass the selected object to the new view controller.
         if let identifier = segue.identifier {
             if identifier == "qrcancel" {
-                print("Cancel button in qr code tapped")
+//                print("Cancel button in qr code tapped")
             }
         }
     }
@@ -133,7 +121,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                     if ( friendNumber > self.numberOfFriend ) {
                         let value = snapshot.value as? NSDictionary
                         self.newFried = Friend(userNmae: value?["dispname"]! as! String, dispName: value?["dispname"]! as! String, sendSet: value?["send"]! as! Bool, uid: value?["uid"]! as! String, tok: value?["tok"]! as! String, inDanger: false)
-                        print("be scaned")
+//                        print("be scaned")
                     }
                 })
             })
@@ -165,8 +153,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                print("scane QR code")
-//                self.friendUid = metadataObj.stringValue!
+//                print("scane QR code")
                 addNewFriend(newUid: metadataObj.stringValue!)
             }
         }
@@ -195,7 +182,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     func addNewFriend(newUid: String) {
-        print("add new friend")
+//        print("add new friend")
         captureSession?.stopRunning()
         videoPreviewLayer?.removeFromSuperlayer()
         // user A (scanner)

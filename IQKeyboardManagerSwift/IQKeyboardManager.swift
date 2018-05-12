@@ -2309,7 +2309,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     fileprivate func showLog(_ logString: String) {
         
         if enableDebugging {
-            print("IQKeyboardManager: " + logString)
+//            print("IQKeyboardManager: " + logString)
         }
     }
 }
